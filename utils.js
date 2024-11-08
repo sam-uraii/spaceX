@@ -1,5 +1,3 @@
-import { MONTH_MAP } from "./Constants/General";
-
 export const dateFormatter = (timeStamp) => {
   let dateInstance = new Date(timeStamp * 1000);
   let date = dateInstance.getDate();
@@ -8,7 +6,7 @@ export const dateFormatter = (timeStamp) => {
   let hours = dateInstance.getHours();
   let minutes = dateInstance.getUTCMinutes();
 
-  return `${date}.${month}.${`${year}`.slice(2, 4)},${hours}:${minutes}`;
+  return `${date}.${month}.${`${year}`.slice(2, 4)} | ${hours}:${minutes}`;
 };
 
 export const debounce = (func, delay) => {
