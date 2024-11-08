@@ -10,8 +10,6 @@ export const fetchRocketData = () => {
 
     try {
       const { selectedLaunchDetail } = getState().LaunchDataReducer;
-      console.log(selectedLaunchDetail);
-
       const response = await api.get(
         `https://api.spacexdata.com/v3/rockets/${selectedLaunchDetail.rocket.rocket_id}`
       );

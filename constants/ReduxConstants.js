@@ -12,3 +12,5 @@ export const UPDATE_ROCKET_DATA_LOADER = "UPDATE_ROCKET_DATA_LOADER";
 //----------------------------------------------------------------------------//
 export const UPDATE_MISSION_DATA = "UPDATE_MISSION_DATA";
 export const UPDATE_MISSION_DATA_LOADER = "UPDATE_MISSION_DATA_LOADER";
+//----------------------------------------------------------------------------//
+export const UPDATE_BOOKMARKED_LAUNCHES = "UPDATE_BOOKMARKED_LAUNCHES";
