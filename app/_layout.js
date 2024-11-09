@@ -9,7 +9,6 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { Provider } from "react-redux";
-
 import { useColorScheme } from "@/hooks/useColorScheme";
 import store, { persistor } from "../Redux/store";
 import { PersistGate } from "redux-persist/integration/react";

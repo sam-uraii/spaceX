@@ -23,6 +23,7 @@ export const fetchLaunchData = () => {
 export const fetchFullLaunchDetails = () => {
   return async (dispatch, getState) => {
     dispatch(updateFullLaunchDetailsLoading(true));
+
     try {
       const { selectedLaunchDetail } = getState().LaunchDataReducer;
       const response = await api.get(

@@ -7,8 +7,6 @@ import LaunchDetails from "../Components/LaunchDetailsScreen/LaunchDetails";
 import MissionDetails from "../Components/LaunchDetailsScreen/MissionDetails";
 import Links from "../Components/LaunchDetailsScreen/Links";
 const LaunchDetailsScreen = ({ selectedLaunchDetail }) => {
-  useEffect(() => {}, []);
-
   return (
     <View style={styles.mainWrapperBox}>
       <Header selectedLaunchDetail={selectedLaunchDetail} />

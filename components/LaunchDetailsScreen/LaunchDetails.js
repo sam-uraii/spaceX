@@ -1,12 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  ActivityIndicator,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { dateFormatter } from "../../utils";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { fetchFullLaunchDetails } from "../../Redux/Middleware/LaunchDataMiddleWare";
 import { connect } from "react-redux";
 
@@ -26,6 +19,7 @@ const LaunchDetails = ({
       </View>
     );
   };
+
   return (
     <View style={styles.mainWrapperBox}>
       {areFullLaunchDetailsLoading ? (
@@ -40,15 +34,15 @@ const LaunchDetails = ({
           )}
           {details(
             `Reason`,
-            `${fullLaunchDetailsOfSelectedLaunch.launch_success ? "It was a success" : fullLaunchDetailsOfSelectedLaunch.launch_failure_details.reason}`
+            `${fullLaunchDetailsOfSelectedLaunch.launch_success ? "It was a success" : fullLaunchDetailsOfSelectedLaunch?.launch_failure_details?.reason}`
           )}
           {details(
             `Site`,
-            `${fullLaunchDetailsOfSelectedLaunch.launch_site.site_name}`
+            `${fullLaunchDetailsOfSelectedLaunch?.launch_site?.site_name}`
           )}
           {details(
             `Window`,
-            `${fullLaunchDetailsOfSelectedLaunch.launch_window}`
+            `${fullLaunchDetailsOfSelectedLaunch?.launch_window}`
           )}
         </>
       ) : (

@@ -6,7 +6,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { dateFormatter } from "../../utils";
 import { fetchRocketData } from "../../Redux/Middleware/RocketDetailsMiddleware";
 import { connect } from "react-redux";
 
@@ -27,6 +26,24 @@ const RocketDetails = ({
       </View>
     );
   };
+  const NameAndTypeComponent = () => {
+    return (
+      <View style={styles.nameAndTypeWrapper}>
+        {details(`Name`, `${rocketData.rocket_name}`)}
+        {details(`Type`, `${rocketData.rocket_type}`)}
+      </View>
+    );
+  };
+  const DescriptionComponent = () => {
+    return (
+      <>
+        <Text style={styles.subHeading}>{`Description`}</Text>
+        <ScrollView>
+          <Text style={styles.description}>{`${rocketData.description}`}</Text>
+        </ScrollView>
+      </>
+    );
+  };
   return (
     <View style={styles.mainWrapperBox}>
       {isRocketDataLoading ? (
@@ -34,25 +51,8 @@ const RocketDetails = ({
       ) : rocketData ? (
         <>
           <Text style={styles.heading}>{`Rocket Details`}</Text>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              marginBottom: 5,
-              paddingRight: 5,
-              borderBottomWidth: 0.5,
-              borderBottomColor: "rgba(0,0,0,0.5)",
-            }}
-          >
-            {details(`Name`, `${rocketData.rocket_name}`)}
-            {details(`Type`, `${rocketData.rocket_type}`)}
-          </View>
-          <Text style={styles.subHeading}>{`Description`}</Text>
-          <ScrollView style={{}}>
-            <Text
-              style={styles.description}
-            >{`${rocketData.description}`}</Text>
-          </ScrollView>
+          <NameAndTypeComponent />
+          <DescriptionComponent />
         </>
       ) : (
         <Text>Launch info not available.</Text>
@@ -75,6 +75,14 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     marginBottom: 5,
     justifyContent: "center",
+  },
+  nameAndTypeWrapper: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 5,
+    paddingRight: 5,
+    borderBottomWidth: 0.5,
+    borderBottomColor: "rgba(0,0,0,0.5)",
   },
   heading: {
     fontSize: 20,

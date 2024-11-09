@@ -23,11 +23,9 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 25,
     fontWeight: "700",
-    // flex: 40,
   },
   date: {
     fontSize: 25,
     fontWeight: "700",
-    // flex: 60,
   },
 });
