@@ -1,9 +1,7 @@
 import axios from "axios";
 import { Alert } from "react-native";
 import { ERROR_400, ERROR_500, NETWORK_ERROR } from "./Constants/APIConstants";
-const api = axios.create({
-  baseURL: "https://api.weatherapi.com/v1/",
-});
+const api = axios.create({});
 
 api.interceptors.response.use(
   (response) => {

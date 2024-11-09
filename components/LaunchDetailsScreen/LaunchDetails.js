@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import { fetchFullLaunchDetails } from "../../Redux/Middleware/LaunchDataMiddleWare";
 import { connect } from "react-redux";
-
+import { primaryTextColor } from "../../Constants/Colors";
 const LaunchDetails = ({
   fetchFullLaunchDetails,
   fullLaunchDetailsOfSelectedLaunch,
@@ -23,7 +23,7 @@ const LaunchDetails = ({
   return (
     <View style={styles.mainWrapperBox}>
       {areFullLaunchDetailsLoading ? (
-        <ActivityIndicator color={"black"} size={15} />
+        <ActivityIndicator color={primaryTextColor} size={15} />
       ) : fullLaunchDetailsOfSelectedLaunch ? (
         <>
           <Text style={styles.heading}>{`Launch Details`}</Text>

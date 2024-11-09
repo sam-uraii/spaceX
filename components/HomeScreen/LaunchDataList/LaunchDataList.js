@@ -9,9 +9,7 @@ const LaunchDataList = ({
   fetchLaunchData,
 }) => {
   const keyExtractor = useCallback((item, index) => `${index}`, []);
-  const ItemSeparator = (
-    <View style={{ height: 3, backgroundColor: "rgba(255,255,255,.5)" }}></View>
-  );
+  const ItemSeparator = <View style={styles.itemSeparator}></View>;
   const getItemLayout = useCallback(
     (data, index) => ({
       length: 150,
@@ -47,6 +45,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
+  itemSeparator: { height: 3, backgroundColor: "rgba(255,255,255,.5)" },
 });
 
 const mapStateToProps = (state) => ({

@@ -13,6 +13,12 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import store, { persistor } from "../Redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { Text } from "react-native";
+import {
+  HOME_SCREEN,
+  HOME_SCREEN_TITLE,
+  LAUNCH_DETAILS_SCREEN,
+  LAUNCH_DETAILS_SCREEN_TITLE,
+} from "../Constants/ScreensConstant";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -43,12 +49,15 @@ export default function RootLayout() {
         >
           <Stack>
             <Stack.Screen
-              name="HomeScreen"
-              options={{ headerShown: true, title: "Launches" }}
+              name={HOME_SCREEN}
+              options={{ headerShown: true, title: HOME_SCREEN_TITLE }}
             />
             <Stack.Screen
-              name="LaunchDetailsScreen"
-              options={{ headerShown: true, title: "Launch Details" }}
+              name={LAUNCH_DETAILS_SCREEN}
+              options={{
+                headerShown: true,
+                title: LAUNCH_DETAILS_SCREEN_TITLE,
+              }}
             />
           </Stack>
         </ThemeProvider>

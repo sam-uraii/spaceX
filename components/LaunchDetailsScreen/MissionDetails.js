@@ -11,6 +11,7 @@ import {
 import { connect } from "react-redux";
 import { fetchMissionData } from "../../Redux/Middleware/MissionDetailsMiddleware";
 import ImageModal from "./ImageModal";
+import { primaryTextColor } from "../../Constants/Colors";
 
 const MissionDetails = ({
   selectedLaunchDetail,
@@ -35,7 +36,7 @@ const MissionDetails = ({
             <></>
           ) : (
             <ActivityIndicator
-              color={"black"}
+              color={primaryTextColor}
               style={{ alignSelf: "center" }}
             />
           )}
@@ -68,11 +69,11 @@ const MissionDetails = ({
   return (
     <View style={styles.mainWrapperBox}>
       {isMissionDataLoading ? (
-        <ActivityIndicator color={"black"} size={15} />
+        <ActivityIndicator color={primaryTextColor} size={15} />
       ) : missionData ? (
         <>
           <Text style={styles.heading}>{`Mission Details`}</Text>
-          <View style={{ flexDirection: "row", flex: 1 }}>
+          <View style={styles.detailsWrapper}>
             <ImageComponent />
             <DescriptionComponent />
             <ImageModal
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     justifyContent: "center",
   },
+  detailsWrapper: { flexDirection: "row", flex: 1 },
   missionImage: {
     width: "100%",
     height: "100%",

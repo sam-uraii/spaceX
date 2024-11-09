@@ -1,9 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { ActivityIndicator, TouchableWithoutFeedback } from "react-native";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from "react-native";
 import { Image } from "react-native";
 import { View } from "react-native";
-
+import { primaryTextColor } from "../../Constants/Colors";
+import { CLOSE } from "../../Constants/IconConstants";
 export default function ImageModal({ visible, onClose, uri }) {
   const HandleOnClose = () => {
     onClose(false);
@@ -12,39 +17,26 @@ export default function ImageModal({ visible, onClose, uri }) {
   return (
     <TouchableWithoutFeedback onPress={HandleOnClose}>
       {visible ? (
-        <View
-          style={{
-            backgroundColor: "rgba(0,0,0,0.2)",
-            width: "100%",
-            height: 600,
-            position: "absolute",
-            bottom: 0,
-          }}
-        >
+        <View style={styles.mainWrapperBox}>
           <Ionicons
-            name={"close"}
+            name={CLOSE}
             size={32}
-            color="black"
+            color={primaryTextColor}
             style={{ alignSelf: "center" }}
             onPress={HandleOnClose}
           />
           {!didImageLoad && (
             <ActivityIndicator
-              color={"black"}
+              color={primaryTextColor}
               size={"large"}
-              style={{ marginTop: "50%" }}
+              style={styles.icon}
             />
           )}
           <Image
             source={{
               uri,
             }}
-            style={{
-              width: "50%",
-              height: "60%",
-              aspectRatio: 2 / 2,
-              marginLeft: 10,
-            }}
+            style={styles.image}
             onLoadEnd={() => {
               setDidImageLoad(true);
             }}
@@ -56,3 +48,19 @@ export default function ImageModal({ visible, onClose, uri }) {
     </TouchableWithoutFeedback>
   );
 }
+const styles = StyleSheet.create({
+  mainWrapperBox: {
+    backgroundColor: "rgba(0,0,0,0.2)",
+    width: "100%",
+    height: 600,
+    position: "absolute",
+    bottom: 0,
+  },
+  icon: { marginTop: "50%" },
+  image: {
+    width: "50%",
+    height: "60%",
+    aspectRatio: 2 / 2,
+    marginLeft: 10,
+  },
+});

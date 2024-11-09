@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { fetchRocketData } from "../../Redux/Middleware/RocketDetailsMiddleware";
 import { connect } from "react-redux";
-
+import { primaryTextColor } from "../../Constants/Colors";
 const RocketDetails = ({
   fetchRocketData,
   rocketData,
@@ -47,7 +47,7 @@ const RocketDetails = ({
   return (
     <View style={styles.mainWrapperBox}>
       {isRocketDataLoading ? (
-        <ActivityIndicator color={"black"} size={15} />
+        <ActivityIndicator color={primaryTextColor} size={15} />
       ) : rocketData ? (
         <>
           <Text style={styles.heading}>{`Rocket Details`}</Text>

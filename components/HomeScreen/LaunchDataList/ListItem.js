@@ -14,7 +14,9 @@ import { connect } from "react-redux";
 import { updateSelectedLaunchDetail } from "../../../Redux/Action/LaunchDataAction";
 import { updateBookmarkedLaunches } from "../../../Redux/Action/BookmarkAction";
 import { getBookmarkedLaunches } from "../../../Redux/ExternalGlobalStateProvider";
-
+import { primaryTextColor } from "../../../Constants/Colors";
+import { HEART, HEART_OUTLINE } from "../../../Constants/IconConstants";
+import { LAUNCH_DETAILS_SCREEN } from "../../../Constants/ScreensConstant";
 const ListItem = React.memo(
   ({
     item,
@@ -28,8 +30,12 @@ const ListItem = React.memo(
     const Avatar = () => {
       const handleImageOnLoad = () => setDidImageLoad(true);
       return (
-        <View style={{ flex: 20, justifyContent: "center" }}>
-          {didImageLoad ? <></> : <ActivityIndicator color={"black"} />}
+        <View style={styles.missionImageWrapper}>
+          {didImageLoad ? (
+            <></>
+          ) : (
+            <ActivityIndicator color={primaryTextColor} />
+          )}
           <Image
             source={{ uri: item.links.mission_patch_small }}
             style={styles.missionImage}
@@ -40,7 +46,7 @@ const ListItem = React.memo(
     };
     const Details = () => {
       return (
-        <View style={styles.itemWrapper}>
+        <View style={styles.detailsWrapper}>
           <View>
             <Text style={styles.title}>{item.mission_name}</Text>
             <Text style={styles.subText}>
@@ -70,25 +76,25 @@ const ListItem = React.memo(
       };
       return (
         <TouchableWithoutFeedback onPress={handleBookmark}>
-          <View style={{ flex: 15, justifyContent: "center" }}>
+          <View style={styles.iconWrapper}>
             <Ionicons
               name={
                 bookmarkedLaunches.hasOwnProperty(item.flight_number)
-                  ? "heart"
-                  : "heart-outline"
+                  ? HEART
+                  : HEART_OUTLINE
               }
               size={32}
-              color="black"
-              style={{ alignSelf: "center" }}
+              color={primaryTextColor}
+              style={styles.icon}
             />
           </View>
         </TouchableWithoutFeedback>
       );
     };
     return (
-      <Link href="/LaunchDetailsScreen" asChild>
+      <Link href={LAUNCH_DETAILS_SCREEN} asChild>
         <TouchableWithoutFeedback onPress={handleTapOnList}>
-          <View style={{ flexDirection: "row", height: 150 }}>
+          <View style={styles.itemWrapper}>
             <Avatar />
             <Details />
             <BookmarkIcon />
@@ -115,10 +121,11 @@ export default connect(mapStateToProps, {
 })(ListItem);
 
 const styles = StyleSheet.create({
-  itemWrapper: {
+  detailsWrapper: {
     padding: 10,
     flex: 65,
   },
+  itemWrapper: { flexDirection: "row", height: 150 },
   title: {
     fontSize: 22,
     fontWeight: "900",
@@ -128,6 +135,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "300",
   },
+  iconWrapper: { flex: 15, justifyContent: "center" },
+  missionImageWrapper: { flex: 20, justifyContent: "center" },
   missionImage: {
     width: 50,
     height: 50,
@@ -135,4 +144,5 @@ const styles = StyleSheet.create({
     objectFit: "cover",
     alignSelf: "center",
   },
+  icon: { alignSelf: "center" },
 });

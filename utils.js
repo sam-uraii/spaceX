@@ -8,15 +8,3 @@ export const dateFormatter = (timeStamp) => {
 
   return `${date}.${month}.${`${year}`.slice(2, 4)} | ${hours}:${minutes}`;
 };
-
-export const debounce = (func, delay) => {
-  let timeoutId;
-  return (value) => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-      func(value);
-    }, delay);
-  };
-};
