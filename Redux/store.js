@@ -6,10 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const persistConfig = {
   key: "root",
   storage: AsyncStorage,
-  whitelist: [
-    // "weatherDetailsOfCityReducer",
-    // "selectedDayForecastDetailsReducer",
-  ], // Only persist the 'weather' slice of the state
+  whitelist: ["BookmarkReducer", "LaunchDataReducer"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer, applyMiddleware(thunk));

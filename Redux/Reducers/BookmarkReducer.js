@@ -10,8 +10,6 @@ const BookmarkReducer = (state = initialState, action) => {
       bookmarkedLaunches: action.bookmarkedLaunches,
     },
   };
-  console.log("yes ocmin");
-
   if (reducerObject.hasOwnProperty(action.type)) {
     return reducerObject[action.type];
   } else {
