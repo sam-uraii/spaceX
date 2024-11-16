@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { fetchFullLaunchDetails } from "../../Redux/Middleware/LaunchDataMiddleWare";
 import { connect } from "react-redux";
 import { primaryTextColor } from "../../Constants/Colors";
@@ -15,7 +21,9 @@ const LaunchDetails = ({
     return (
       <View style={{ flexDirection: "row" }}>
         <Text style={styles.subHeading}>{`${subHeading}`}</Text>
-        <Text style={styles.subHeadingValue}>{`${value}`}</Text>
+        <ScrollView style={{ height: 35, width: 100 }}>
+          <Text style={styles.subHeadingValue}>{`${value}`}</Text>
+        </ScrollView>
       </View>
     );
   };
@@ -65,7 +73,7 @@ const styles = StyleSheet.create({
   mainWrapperBox: {
     flex: 20,
     borderWidth: 1,
-    borderRadius: "50%",
+    borderRadius: 50,
     padding: 10,
     marginBottom: 5,
     justifyContent: "center",
@@ -91,6 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: "600",
     marginLeft: 30,
+    width: "100%",
   },
   type: {
     fontSize: 35,

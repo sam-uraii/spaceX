@@ -25,5 +25,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, null)(LaunchDetailsScreen);
 
 const styles = StyleSheet.create({
-  mainWrapperBox: { flex: 1, padding: 10 },
+  mainWrapperBox: { flex: 1, padding: 10, backgroundColor: "white" },
 });

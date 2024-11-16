@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   mainWrapperBox: {
     flex: 30,
     borderWidth: 1,
-    borderRadius: "50%",
+    borderRadius: 50,
     paddingBottom: 5,
     marginBottom: 5,
     justifyContent: "center",

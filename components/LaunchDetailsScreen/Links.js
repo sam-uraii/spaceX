@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   mainWrapperBox: {
     flex: 15,
     borderWidth: 1,
-    borderRadius: "50%",
+    borderRadius: 50,
     padding: 10,
   },
   note: {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "blue",
     borderWidth: 1,
-    borderRadius: "8%",
+    borderRadius: 10,
     padding: 5,
   },
 });

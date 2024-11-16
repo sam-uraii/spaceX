@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "900",
-    fontFamily: "SpaceMono-Regular",
+    // fontFamily: "SpaceMono-Regular",
   },
   subText: {
     fontSize: 16,
